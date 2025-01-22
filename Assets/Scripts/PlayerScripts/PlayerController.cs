@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
      public float speed = 10.0f;
     public CharacterController controller;
+    public GameObject interactiveObject;
     public Transform playerTransform;
     public float transformTime = 4f;
     public Animator animator;
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveZ;
     private float moveY;
     private float gravity = 9.8f;
+
+
+    public static PlayerController Instance;
+    private void Awake()=>Instance = this;
 
 
     private void Update() {
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
     }
     private void playerMove(){
   
-        if(controller != null){ 
+        if(controller.enabled){ 
 
         float x = Input.GetAxis("Horizontal");
         moveX = transform.right * x;
@@ -98,6 +103,8 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         moveZ = transform.forward * z;
         controller.Move(moveZ * speed * Time.deltaTime);
+
+        controller.Move(new Vector3(0f, moveY, 0f));
         }
 
     }

@@ -37,23 +37,20 @@ public class PlayerClimb : MonoBehaviour
 
 
             if(mico.activeSelf){
-                print("Climb");
+                
                 StartClimb(other.transform);
             }
             else{
-                print("You can't climb");
+                print("cant climb");
             }
         }
     }
 
     private void StartClimb(Transform climbArea)
     {
-        print("StartClimb");
         // Configura os pontos de escalada com base no objeto de escalada
         climbStartPoint = climbArea.Find("ClimbStart");
         climbEndPoint = climbArea.Find("ClimbEnd");
-        print(climbStartPoint);
-        print(climbEndPoint);
 
         if (climbStartPoint != null && climbEndPoint != null)
         {
