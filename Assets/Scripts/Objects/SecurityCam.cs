@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class SecurityCam : MonoBehaviour
 {
-    public Transform player; // Referência ao jogador
-    public float detectionRange = 10f; // Alcance da visão
     public float rotationSpeed = 2f; // Velocidade de rotação da câmera
     public float leftLimit = -45f; // Limite esquerdo de rotação
     public float rightLimit = 45f; // Limite direito de rotação
