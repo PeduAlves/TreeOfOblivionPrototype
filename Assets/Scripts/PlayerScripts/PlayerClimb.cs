@@ -5,10 +5,12 @@ public class PlayerClimb : MonoBehaviour
     public Transform climbStartPoint; // Ponto inicial da escalada
     public Transform climbEndPoint;   // Ponto final da escalada
     public float climbSpeed = 5f;     // Velocidade de escalada
-    public GameObject mico;
-
     private bool isClimbing = false;
     private CharacterController controller; // Controlador do jogador
+
+    
+    public static PlayerClimb Instance;
+    private void Awake()=>Instance = this;
 
     private void Start()
     {
@@ -16,7 +18,7 @@ public class PlayerClimb : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         if (isClimbing)
         {
             // Move o jogador do ponto inicial ao ponto final
@@ -31,22 +33,7 @@ public class PlayerClimb : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {   
-        if (other.CompareTag("ClimbArea") && Input.GetButtonDown("Climb")){
-
-
-            if(mico.activeSelf){
-                
-                StartClimb(other.transform);
-            }
-            else{
-                print("cant climb");
-            }
-        }
-    }
-
-    private void StartClimb(Transform climbArea)
+    public void StartClimb(Transform climbArea)
     {
         // Configura os pontos de escalada com base no objeto de escalada
         climbStartPoint = climbArea.Find("ClimbStart");

@@ -1,19 +1,14 @@
 using UnityEngine;
 
-public class PortaoBotão : MonoBehaviour
-{   
-    public GameObject portao;
-    private void Update() {
-        if(PlayerController.Instance.interactiveObject == this.gameObject && Input.GetButtonDown("Interact")){
+public class ClimbArea : MonoBehaviour
+{
+   private void Update() {
+    if(PlayerController.Instance.interactiveObject == this.gameObject && Input.GetButtonDown("Interact")){
             
-            if(portao.activeSelf){
-                portao.SetActive(false);
-            }
-            else{
-                portao.SetActive(true);
-            }
+            PlayerClimb.Instance.StartClimb(this.transform);
+            
         }
-    }
+   }
     private void OnTriggerEnter(Collider other) {
         
         if(other.CompareTag("Player")){
@@ -28,5 +23,4 @@ public class PortaoBotão : MonoBehaviour
             PlayerController.Instance.interactiveObject = null;
         }
     }
-
 }

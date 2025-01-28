@@ -1,7 +1,9 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -125,6 +127,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void gameOver(){
-        gameOverScreen.SetActive(true);
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -185,6 +185,10 @@ PrefabInstance:
       propertyPath: vision
       value: 
       objectReference: {fileID: 7785042856978153358}
+    - target: {fileID: 1440210007577771917, guid: 64db8d48fab1ceb43a8ee5d52643029a, type: 3}
+      propertyPath: timeToGameOver
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6127395625895404759, guid: 64db8d48fab1ceb43a8ee5d52643029a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.869965

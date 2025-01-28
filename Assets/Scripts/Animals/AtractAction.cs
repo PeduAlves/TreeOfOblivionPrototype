@@ -1,17 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class PortaoBotão : MonoBehaviour
-{   
-    public GameObject portao;
+public class AtractAction : MonoBehaviour
+{
+    public List<GameObject> enemys;
+    public GameObject localToAtract;
+
     private void Update() {
+        
         if(PlayerController.Instance.interactiveObject == this.gameObject && Input.GetButtonDown("Interact")){
             
-            if(portao.activeSelf){
-                portao.SetActive(false);
-            }
-            else{
-                portao.SetActive(true);
-            }
+            AtractEnemys();
         }
     }
     private void OnTriggerEnter(Collider other) {
@@ -29,4 +29,11 @@ public class PortaoBotão : MonoBehaviour
         }
     }
 
+    private void AtractEnemys(){
+
+        foreach (var enemy in enemys){
+
+            enemy.GetComponent<NavMeshAgent>().SetDestination(localToAtract.transform.position);
+        }
+    }
 }
