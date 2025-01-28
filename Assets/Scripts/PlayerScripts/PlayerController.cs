@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveZ;
     private float moveY;
     private float gravity = 9.8f;
+    public GameObject gameOverScreen;
 
 
     public static PlayerController Instance;
@@ -122,5 +123,8 @@ public class PlayerController : MonoBehaviour
         } else {
             animator.SetBool("isRunning", false);
         }
+    }
+    public void gameOver(){
+        gameOverScreen.SetActive(true);
     }
 }
