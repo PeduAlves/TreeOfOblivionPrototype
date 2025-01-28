@@ -17,14 +17,14 @@ public class AtractAction : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         
         if(other.CompareTag("Player")){
-            print("Pode Interagir");
+            PlayerController.Instance.interactObject.SetActive(true);
             PlayerController.Instance.interactiveObject = this.gameObject;
         }
     }
     
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Player")){
-            print("Não pode Interagir");
+            PlayerController.Instance.interactObject.SetActive(false);
             PlayerController.Instance.interactiveObject = null;
         }
     }

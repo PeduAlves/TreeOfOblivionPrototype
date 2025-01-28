@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-     public float speed = 10.0f;
+    public float speed = 10.0f;
     public CharacterController controller;
     public GameObject interactiveObject;
     public Transform playerTransform;
@@ -15,12 +15,13 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public GameObject jaguatirica, mico, Capivara, human, vult;
     private bool isTransforming = false;
-    private string currentForm = "Human"; // Mantém o estado atual do jogador.
+    public string currentForm = "Human"; // Mantém o estado atual do jogador.
     private Vector3 moveX;
     private Vector3 moveZ;
     private float moveY;
     private float gravity = 9.8f;
     public GameObject gameOverScreen;
+    public GameObject interactObject;
 
 
     public static PlayerController Instance;
