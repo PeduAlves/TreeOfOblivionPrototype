@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,12 +26,17 @@ public class PlayerController : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject interactObject;
     public bool hasKey = false;
+    public TextMeshProUGUI instrucionText;
+    public TextMeshProUGUI keyText;
 
 
     public static PlayerController Instance;
     private void Awake()=>Instance = this;
 
-
+    private void Start(){
+        
+        StartCoroutine(startInstrucionText());
+    }
     private void Update() {
 
         playerRotation();
@@ -99,7 +106,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void playerMove(){
-  
+
         if(controller.enabled){ 
 
         float x = Input.GetAxis("Horizontal");
@@ -131,5 +138,11 @@ public class PlayerController : MonoBehaviour
     }
     public void gameOver(){
         SceneManager.LoadScene("Menu");
+    }
+
+    IEnumerator startInstrucionText(){
+        keyText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5);
+        keyText.gameObject.SetActive(false);
     }
 }
