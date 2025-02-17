@@ -1,12 +1,9 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
-using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.Rendering;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public GameObject interactiveObject;
     public Transform playerTransform;
-    public float transformTime = 4f;
+    public float transformTime = 3f;
     public Animator animator;
     public GameObject jaguatirica, mico, Capivara, human, vult;
     private bool isTransforming = false;
@@ -23,20 +20,21 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveZ;
     private float moveY;
     private float gravity = 9.8f;
-    public GameObject gameOverScreen;
     public GameObject interactObject;
     public bool hasKey = false;
-    public TextMeshProUGUI instrucionText;
-    public TextMeshProUGUI keyText;
+    public int vultCharges = 3;
+    public List <GameObject> vultChargesIcon;
 
 
     public static PlayerController Instance;
     private void Awake()=>Instance = this;
-
-    private void Start(){
-        
-        StartCoroutine(startInstrucionText());
+    void Start()
+    {
+        foreach(GameObject charge in vultChargesIcon){
+            charge.SetActive(true);
+        } 
     }
+
     private void Update() {
 
         playerRotation();
@@ -70,14 +68,18 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(TransformTo("Human", human, 6));
         }
-        else if (Input.GetButtonDown("VultKey") )
+        else if (Input.GetButtonDown("VultKey") && vultCharges > 0)
         {
             StartCoroutine(TransformTo("Vult", vult, 12));
+            vultCharges--;
+            print("Vult Charges: " + vultCharges);
+            vultChargesIcon[vultCharges].SetActive(false);
         }
     }
 
     private IEnumerator TransformTo(string newForm, GameObject newFormObject, int layer)
     {
+
         isTransforming = true;
 
         jaguatirica.SetActive(false);
@@ -137,12 +139,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void gameOver(){
-        SceneManager.LoadScene("Menu");
-    }
-
-    IEnumerator startInstrucionText(){
-        keyText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5);
-        keyText.gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 }

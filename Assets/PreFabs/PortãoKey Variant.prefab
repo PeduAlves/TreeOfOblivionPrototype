@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4954483501123301003}
   - component: {fileID: 5423348037755864272}
   - component: {fileID: 3001656823650336242}
+  - component: {fileID: 936793000526661750}
   m_Layer: 7
   m_Name: Tranca
   m_TagString: Untagged
@@ -104,12 +105,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.7141584, y: 2.4853249, z: 2.2535627}
+  m_Center: {x: 0.025305394, y: 0.11743903, z: 0.043656733}
+--- !u!114 &936793000526661750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915747289696694951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0238a44add976e468eb936eb48194b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portao: {fileID: 7198854272696841078}
 --- !u!1 &1155259890752372458
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,5 +449,10 @@ PrefabInstance:
 --- !u!4 &984014563534471033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1982803953125959073, guid: eea4ae2f1321f2f4187781ab6f1e1d5c, type: 3}
+  m_PrefabInstance: {fileID: 1595322895429032664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7198854272696841078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8486134550219303342, guid: eea4ae2f1321f2f4187781ab6f1e1d5c, type: 3}
   m_PrefabInstance: {fileID: 1595322895429032664}
   m_PrefabAsset: {fileID: 0}
