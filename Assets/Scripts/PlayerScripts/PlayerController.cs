@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isTransforming) return;
 
-        if (Input.GetButtonDown("CapivaraKey"))
+        /* if (Input.GetButtonDown("CapivaraKey"))
         {
             StartCoroutine(TransformTo("Capivara", Capivara, 11));
         }
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonDown("JaguatiricaKey"))
         {
             StartCoroutine(TransformTo("Jaguatirica", jaguatirica, 10));
-        }
+        } */
         else if (Input.GetButtonDown("HumanKey") )
         {
             StartCoroutine(TransformTo("Human", human, 6));
